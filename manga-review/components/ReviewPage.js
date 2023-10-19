@@ -1,18 +1,14 @@
 import react from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { View, Text } from "react-native";
+import globalStyles from "../styles/globalStyles";
 
-export default ReviewPage = () =>{
-
+export default ReviewPage = ({ route}) =>{
+    const { name, body, rating} = route.params
     return(
-        <View style={styles.container}>
-
+        <View style={globalStyles.container}> 
+            <Text style={globalStyles.textTitle}>{name}</Text>  
+            <Text style={globalStyles.textTitle}>{body}</Text>  
+            <Text style={globalStyles.textTitle}>{rating}</Text>  
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        padding:24
-    }
-})

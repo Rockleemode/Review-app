@@ -1,8 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import Home from "./components/Home";
 import ReviewPage from "./components/ReviewPage";
 import { useFonts } from "expo-font";
+import globalStyles from "./styles/globalStyles";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';  
+
+const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   const [fontLoaded] = useFonts({
@@ -11,21 +17,14 @@ export default function App() {
   });
   if (fontLoaded) {
     return (
-      <View style={styles.container}>
-        <Home />
-        <StatusBar style="auto" />
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home"> 
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Reviews" component={ReviewPage} />
+        </Stack.Navigator>   
+      </NavigationContainer>
     );
   } else {
     return <Text>Loading...</Text>;
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    paddingtop: 30,
-    alignItems: "center",
-    justifyContent: "center",
-  }
-});
