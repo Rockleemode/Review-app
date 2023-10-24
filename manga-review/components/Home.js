@@ -23,7 +23,7 @@ export default Home = ({ navigation }) => {
       />
       <Button
       title="review"
-      onPress={() => navigation.navigate("Reviews")}
+      onPress={() => navigation.navigate("ReviewPage")}
       />
     </View>
   );
